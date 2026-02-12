@@ -1,0 +1,192 @@
+/**
+ * Slider Nav Button - Core Styles
+ * Pill-shaped navigation with divider-to-hover slide animation
+ */
+
+.snb {
+  /* CSS Custom Properties for customization */
+  --snb-bg: transparent;
+  --snb-hover-bg: #f7f7f7;
+  --snb-border-color: #f2f2f2;
+  --snb-icon-color: #000;
+  --snb-divider-color: var(--snb-border-color);
+  --snb-radius: 9999px;
+  --snb-height: 36px;
+  --snb-width: 90px;
+  --snb-transition-duration: 0.28s;
+  --snb-transition-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --snb-hover-padding: 2px;
+  --snb-icon-size: 18px;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--snb-width);
+  height: var(--snb-height);
+  border-radius: var(--snb-radius);
+  border: 1px solid var(--snb-border-color);
+  background: var(--snb-bg);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* Hover background panels - slide from divider */
+.snb-left-bg,
+.snb-right-bg {
+  position: absolute;
+  top: var(--snb-hover-padding);
+  bottom: var(--snb-hover-padding);
+  background: var(--snb-hover-bg);
+  border-radius: var(--snb-radius);
+  transform: scaleX(0);
+  transition: transform var(--snb-transition-duration) var(--snb-transition-easing);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.snb-left-bg {
+  left: var(--snb-hover-padding);
+  right: calc(50% + 0.5px);
+  transform-origin: right center;
+  border-radius: var(--snb-radius);
+}
+
+.snb-right-bg {
+  right: var(--snb-hover-padding);
+  left: calc(50% + 0.5px);
+  transform-origin: left center;
+  border-radius: var(--snb-radius);
+}
+
+/* Expand from divider when hovering respective side (Vanilla JS - legacy, unused when snb-js) */
+.snb:not(.snb-motion):not(.snb-js):has(.snb-left:hover) .snb-left-bg {
+  transform: scaleX(1);
+}
+
+.snb:not(.snb-motion):not(.snb-js):has(.snb-right:hover) .snb-right-bg {
+  transform: scaleX(1);
+}
+
+/* Vanilla JS - single pill: slides via translateX, all states use right center origin
+   so both exits shrink toward the divider and cross-side slides are smooth */
+.snb-js .snb-js-slide-bg {
+  position: absolute;
+  top: var(--snb-hover-padding);
+  bottom: var(--snb-hover-padding);
+  left: var(--snb-hover-padding);
+  right: 50%;
+  background: var(--snb-hover-bg);
+  border-radius: var(--snb-radius);
+  pointer-events: none;
+  z-index: 0;
+  transform: scaleX(0) translateX(0);
+  transform-origin: right center;
+  transition: transform var(--snb-transition-duration) var(--snb-transition-easing);
+}
+
+.snb-js.snb-enter-right-prep .snb-js-slide-bg {
+  transform: scaleX(0) translateX(100%);
+  transition: none;
+}
+
+.snb-js.snb-hover-left .snb-js-slide-bg {
+  transform: scaleX(1) translateX(0);
+}
+
+.snb-js.snb-hover-right .snb-js-slide-bg {
+  transform: scaleX(1) translateX(100%);
+}
+
+.snb-js.snb-exit-from-left .snb-js-slide-bg {
+  transform: scaleX(0) translateX(0);
+}
+
+.snb-js.snb-exit-from-right .snb-js-slide-bg {
+  transform: scaleX(0) translateX(100%);
+}
+
+.snb-js.snb-hover-left .snb-divider,
+.snb-js.snb-hover-right .snb-divider,
+.snb-js.snb-enter-right-prep .snb-divider {
+  opacity: 0;
+}
+
+/* Framer Motion controls these - disable CSS transition */
+.snb.snb-motion .snb-left-bg,
+.snb.snb-motion .snb-right-bg {
+  transition: none;
+}
+
+/* Framer Motion - single pill with right center origin */
+.snb.snb-motion .snb-motion-slide-bg {
+  position: absolute;
+  top: var(--snb-hover-padding);
+  bottom: var(--snb-hover-padding);
+  left: var(--snb-hover-padding);
+  right: 50%;
+  background: var(--snb-hover-bg);
+  border-radius: var(--snb-radius);
+  pointer-events: none;
+  z-index: 0;
+  transform-origin: right center;
+}
+
+/* Button wrappers */
+.snb-left,
+.snb-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--snb-icon-color);
+  padding: 0;
+  transition: color var(--snb-transition-duration) var(--snb-transition-easing);
+  z-index: 1;
+}
+
+.snb-left:hover,
+.snb-right:hover {
+  color: var(--snb-icon-color);
+}
+
+/* Divider - hidden when hovering either side */
+.snb-divider {
+  width: 1px;
+  height: 60%;
+  min-height: 16px;
+  background: var(--snb-divider-color);
+  flex-shrink: 0;
+  opacity: 1;
+  transition: opacity var(--snb-transition-duration) var(--snb-transition-easing);
+}
+
+.snb:not(.snb-motion):has(.snb-left:hover) .snb-divider,
+.snb:not(.snb-motion):has(.snb-right:hover) .snb-divider {
+  opacity: 0;
+}
+
+.snb.snb-motion .snb-divider {
+  transition: none;
+}
+
+/* Arrow icon container */
+.snb-icon {
+  width: var(--snb-icon-size);
+  height: var(--snb-icon-size);
+  display: block;
+}
+
+.snb-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

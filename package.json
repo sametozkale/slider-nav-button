@@ -1,0 +1,60 @@
+{
+  "name": "slider-nav-button",
+  "version": "1.0.0",
+  "description": "Pill-shaped slider navigation button with divider-to-hover animation",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./react": {
+      "types": "./dist/react/index.d.ts",
+      "import": "./dist/react/index.js",
+      "require": "./dist/react/index.cjs"
+    },
+    "./styles.css": "./dist/slider-button.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup && shx cp src/core/slider-button.css dist/slider-button.css",
+    "dev": "tsup --watch",
+    "demo": "npm run build && npx serve . -p 3000"
+  },
+  "keywords": [
+    "slider",
+    "navigation",
+    "button",
+    "carousel",
+    "arrows",
+    "ui",
+    "react"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "@hugeicons/core-free-icons": "^3.1.1",
+    "@hugeicons/react": "^1.1.5",
+    "framer-motion": ">=11",
+    "react": ">=17"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@hugeicons/core-free-icons": "^3.1.1",
+    "@hugeicons/react": "^1.1.5",
+    "@types/react": "^18.2.0",
+    "react": "^18.2.0",
+    "shx": "^0.3.4",
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.0"
+  }
+}

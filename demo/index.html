@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slider Nav Button - Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="../dist/slider-button.css">
+  <style>
+    /* Open Runde – multiple weights from GitHub (jsDelivr) */
+    @font-face {
+      font-family: "Open Runde";
+      src: url("https://cdn.jsdelivr.net/gh/lauridskern/open-runde@main/src/web/OpenRunde-Regular.woff2") format("woff2"),
+           url("https://cdn.jsdelivr.net/gh/lauridskern/open-runde@main/src/web/OpenRunde-Regular.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Open Runde";
+      src: url("https://cdn.jsdelivr.net/gh/lauridskern/open-runde@main/src/web/OpenRunde-Medium.woff2") format("woff2"),
+           url("https://cdn.jsdelivr.net/gh/lauridskern/open-runde@main/src/web/OpenRunde-Medium.woff") format("woff");
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Open Runde";
+      src: url("https://cdn.jsdelivr.net/gh/lauridskern/open-runde@main/src/web/OpenRunde-Semibold.woff2") format("woff2"),
+           url("https://cdn.jsdelivr.net/gh/lauridskern/open-runde@main/src/web/OpenRunde-Semibold.woff") format("woff");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Open Runde";
+      src: url("https://cdn.jsdelivr.net/gh/lauridskern/open-runde@main/src/web/OpenRunde-Bold.woff2") format("woff2"),
+           url("https://cdn.jsdelivr.net/gh/lauridskern/open-runde@main/src/web/OpenRunde-Bold.woff") format("woff");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      margin: 0;
+      padding: 6rem 2rem;
+      background: #fff;
+      color: #1a1a1a;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-family: "Open Runde", system-ui, sans-serif;
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.75rem;
+    }
+    .intro {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 1.0625rem;
+      color: #444;
+      margin: 0 0 3rem;
+    }
+    section {
+      margin-bottom: 3.5rem;
+    }
+    section h2 {
+      font-family: "Open Runde", system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.5rem;
+    }
+    section p {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 1rem;
+      color: #444;
+      margin: 0 0 1rem;
+    }
+    code {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.9em;
+      background: #f0f0f0;
+      padding: 0.15em 0.4em;
+      border-radius: 4px;
+    }
+    .demo-box {
+      background: #fff;
+      border: 1px solid #f7f7f7;
+      border-radius: 16px;
+      padding: 2rem;
+      padding-bottom: 24px;
+      margin: 1rem 0 1.5rem;
+      box-shadow: none;
+    }
+    .demo-box-caption {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.875rem;
+      color: #666;
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+    .demo-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .demo-label {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.8125rem;
+      color: #888;
+    }
+    .demo-size-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .demo-row-sizes {
+      gap: 64px;
+    }
+    @media (max-width: 640px) {
+      .demo-row-sizes {
+        gap: 32px;
+      }
+    }
+    .demo-dark-wrapper {
+      margin: 1rem 0 1.5rem;
+    }
+    .demo-dark-bg {
+      background: #1a1a1a;
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 0;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: none;
+    }
+    .demo-dark-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .demo-dark-bg .snb {
+      --snb-bg: transparent;
+      --snb-hover-bg: #323232;
+      --snb-border-color: rgba(255,255,255,0.05);
+      --snb-divider-color: rgba(255,255,255,0.05);
+      --snb-icon-color: #fff;
+    }
+    .demo-dark-caption {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.875rem;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.75);
+      margin: 1.5rem 0 0;
+      text-align: center;
+    }
+    .usage-section {
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid #f2f2f2;
+    }
+    .usage-section > h2 {
+      font-size: 1.5rem;
+      margin: 0 0 0.75rem;
+    }
+    .usage-section .usage-intro {
+      font-size: 1.0625rem;
+      color: #444;
+      margin: 0 0 2.5rem;
+      line-height: 1.6;
+    }
+    .usage-section .usage-subsection {
+      margin-bottom: 2.5rem;
+    }
+    .usage-section .usage-subsection h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.5rem;
+    }
+    .usage-section .usage-subsection p {
+      margin: 0 0 1rem;
+    }
+    /* ── Code Block Group (prompt-kit style) ── */
+    .code-block-group {
+      margin: 1rem 0 1.5rem;
+      border: 1px solid #f4f4f4;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fafafa;
+    }
+    .code-block-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      background: #fcfcfc;
+      border-bottom: 1px solid #f4f4f4;
+    }
+    .code-block-lang {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      color: rgba(119, 119, 119, 1);
+      background: rgba(238, 238, 238, 1);
+      padding: 0.15rem 0.5rem;
+      border-radius: 6px;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+    }
+    .code-block-filename {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.8125rem;
+      color: #71717a;
+      flex: 1;
+    }
+    .code-block-copy {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+      border-radius: 5px;
+      color: #a1a1aa;
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+    .code-block-copy:hover {
+      color: #52525b;
+      background: rgba(0,0,0,0.05);
+    }
+    .code-block-copy svg {
+      width: 15px;
+      height: 15px;
+    }
+    .code-block-copy .icon-check {
+      display: none;
+      color: #22c55e;
+    }
+    .code-block-copy.copied .icon-copy {
+      display: none;
+    }
+    .code-block-copy.copied .icon-check {
+      display: block;
+    }
+    .code-block {
+      font-family: ui-monospace, "SF Mono", "Cascadia Code", "Menlo", monospace;
+      font-size: 0.8125rem;
+      background: #ffffff;
+      color: #1a1a1a;
+      padding: 1rem 1.25rem;
+      overflow-x: auto;
+      line-height: 1.7;
+      margin: 0;
+      border: none;
+      border-radius: 0;
+    }
+    .code-block code {
+      background: none;
+      padding: 0;
+      color: inherit;
+      font-family: inherit;
+      font-size: inherit;
+      white-space: pre;
+      display: block;
+    }
+    /* Syntax highlighting colors */
+    .code-block .comment   { color: #6a737d; }
+    .code-block .keyword   { color: #d73a49; }
+    .code-block .function  { color: #6f42c1; }
+    .code-block .string    { color: #032f62; }
+    .code-block .property  { color: #005cc5; }
+    .code-block .tag       { color: #22863a; }
+    .code-block .attr-name { color: #6f42c1; }
+    .code-block .attr-value{ color: #032f62; }
+    .code-block .punctuation { color: #24292e; }
+    .page-footer {
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.875rem;
+      color: #888;
+      text-align: center;
+      padding-bottom: 2rem;
+    }
+    .page-footer a {
+      color: #666;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+    .page-footer a:hover {
+      color: #1a1a1a;
+    }
+    .page-footer-divider {
+      border: none;
+      border-top: 1px solid #f2f2f2;
+      margin: 4rem 0 2rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1>Slider Nav Button</h1>
+    <p class="intro">
+      A pill-shaped navigation button with a divider-to-hover animation. When you hover over the left or right arrow, a background slides out from the central divider toward the hovered side.
+    </p>
+
+    <section>
+      <h2>Default</h2>
+      <p>
+        The component consists of two arrow buttons separated by a thin divider. Hover interaction reveals the sliding background effect.
+      </p>
+      <div class="demo-box">
+        <div class="demo-row">
+          <div id="mount-default"></div>
+        </div>
+        <p class="demo-box-caption">Hover over the left or right arrow<br>to see the divider-to-hover animation</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Sizes</h2>
+      <p>
+        Available in three sizes: <code>sm</code>, <code>md</code>, and <code>lg</code>.
+      </p>
+      <div class="demo-box">
+        <div class="demo-row demo-row-sizes">
+          <div class="demo-size-item">
+            <div id="mount-sm"></div>
+            <span class="demo-label">sm</span>
+          </div>
+          <div class="demo-size-item">
+            <div id="mount-md"></div>
+            <span class="demo-label">md</span>
+          </div>
+          <div class="demo-size-item">
+            <div id="mount-lg"></div>
+            <span class="demo-label">lg</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Dark theme</h2>
+      <p>
+        Customize colors with CSS custom properties for dark mode or any theme.
+      </p>
+      <div class="demo-dark-wrapper">
+        <div class="demo-dark-bg">
+          <div class="demo-dark-row">
+            <div id="mount-dark"></div>
+          </div>
+          <p class="demo-dark-caption">Border, hover, and icon colors can be customized<br>via CSS variables for seamless theme integration.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="usage-section">
+      <h2>How to use in your project</h2>
+      <p class="usage-intro">
+        The component works with both Vanilla JavaScript and React. Install the package and choose the integration that fits your stack.
+      </p>
+
+      <div class="usage-subsection">
+        <h2>Installation</h2>
+        <p>Install the package and, for React projects, the Hugeicons dependencies used by the default icons.</p>
+        <div class="code-block-group">
+          <div class="code-block-header">
+            <span class="code-block-lang">Bash</span>
+            <span class="code-block-filename">terminal</span>
+            <button class="code-block-copy" onclick="copyCode(this)" aria-label="Copy code">
+              <svg class="icon-copy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg class="icon-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+          </div>
+          <div class="code-block">
+            <code><span class="comment"># Core package (Vanilla JS or React)</span>
+npm install slider-nav-button
+
+<span class="comment"># For React with default icons</span>
+npm install @hugeicons/react @hugeicons/core-free-icons</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="usage-subsection">
+        <h2>Vanilla JavaScript</h2>
+        <p>Without a framework, import the component and mount it into a DOM element. Don't forget to import the styles.</p>
+        <div class="code-block-group">
+          <div class="code-block-header">
+            <span class="code-block-lang">JavaScript</span>
+            <span class="code-block-filename">app.js</span>
+            <button class="code-block-copy" onclick="copyCode(this)" aria-label="Copy code">
+              <svg class="icon-copy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg class="icon-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+          </div>
+          <div class="code-block">
+            <code><span class="comment">// In your HTML: &lt;div id="slider-container"&gt;&lt;/div&gt;</span>
+
+<span class="keyword">import</span> { <span class="function">SliderButton</span> } <span class="keyword">from</span> <span class="string">'slider-nav-button'</span>;
+<span class="keyword">import</span> <span class="string">'slider-nav-button/styles.css'</span>;
+
+<span class="keyword">const</span> button = <span class="keyword">new</span> <span class="function">SliderButton</span>({
+  <span class="property">onPrev</span>: () => console.<span class="function">log</span>(<span class="string">'Previous'</span>),
+  <span class="property">onNext</span>: () => console.<span class="function">log</span>(<span class="string">'Next'</span>),
+  <span class="property">size</span>: <span class="string">'md'</span>,  <span class="comment">// 'sm' | 'md' | 'lg'</span>
+});
+
+button.<span class="function">mount</span>(<span class="string">'#slider-container'</span>);</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="usage-subsection">
+        <h2>React</h2>
+        <p>Import the React component and use it like any other component. Styles are included automatically.</p>
+        <div class="code-block-group">
+          <div class="code-block-header">
+            <span class="code-block-lang">React</span>
+            <span class="code-block-filename">carousel.tsx</span>
+            <button class="code-block-copy" onclick="copyCode(this)" aria-label="Copy code">
+              <svg class="icon-copy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg class="icon-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+          </div>
+          <div class="code-block">
+            <code><span class="keyword">import</span> { <span class="function">useState</span> } <span class="keyword">from</span> <span class="string">'react'</span>;
+<span class="keyword">import</span> { <span class="function">SliderButton</span> } <span class="keyword">from</span> <span class="string">'slider-nav-button/react'</span>;
+
+<span class="keyword">function</span> <span class="function">Carousel</span>() {
+  <span class="keyword">const</span> [index, setIndex] = <span class="function">useState</span>(<span class="property">0</span>);
+
+  <span class="keyword">return</span> (
+    &lt;<span class="tag">SliderButton</span>
+      <span class="attr-name">onPrev</span>={<span class="punctuation">()</span> =&gt; <span class="function">setIndex</span>(prev =&gt; Math.<span class="function">max</span>(<span class="property">0</span>, prev - <span class="property">1</span>))}
+      <span class="attr-name">onNext</span>={<span class="punctuation">()</span> =&gt; <span class="function">setIndex</span>(prev =&gt; prev + <span class="property">1</span>)}
+      <span class="attr-name">size</span>=<span class="string">"md"</span>
+    /&gt;
+  );
+}</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="usage-subsection">
+        <h2>Customization</h2>
+        <p>Use CSS custom properties to match your theme. Target the <code>.snb</code> class or pass a custom <code>className</code>.</p>
+        <div class="code-block-group">
+          <div class="code-block-header">
+            <span class="code-block-lang">CSS</span>
+            <span class="code-block-filename">styles.css</span>
+            <button class="code-block-copy" onclick="copyCode(this)" aria-label="Copy code">
+              <svg class="icon-copy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg class="icon-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+          </div>
+          <div class="code-block">
+            <code><span class="tag">.snb</span> {
+  <span class="property">--snb-bg</span>: <span class="string">transparent</span>;
+  <span class="property">--snb-hover-bg</span>: <span class="string">#f7f7f7</span>;
+  <span class="property">--snb-border-color</span>: <span class="string">#f2f2f2</span>;
+  <span class="property">--snb-icon-color</span>: <span class="string">#000</span>;
+  <span class="property">--snb-divider-color</span>: <span class="keyword">var</span>(<span class="property">--snb-border-color</span>);
+  <span class="property">--snb-height</span>: <span class="string">36px</span>;
+  <span class="property">--snb-width</span>: <span class="string">90px</span>;
+  <span class="property">--snb-icon-size</span>: <span class="string">18px</span>;
+}</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="usage-subsection">
+        <h2>Custom icons</h2>
+        <p>Replace the default arrows with your own icons via the <code>iconLeft</code> and <code>iconRight</code> props.</p>
+        <div class="code-block-group">
+          <div class="code-block-header">
+            <span class="code-block-lang">React</span>
+            <span class="code-block-filename">example.tsx</span>
+            <button class="code-block-copy" onclick="copyCode(this)" aria-label="Copy code">
+              <svg class="icon-copy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg class="icon-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+          </div>
+          <div class="code-block">
+            <code>&lt;<span class="tag">SliderButton</span>
+  <span class="attr-name">iconLeft</span>={&lt;<span class="function">ChevronLeftIcon</span> <span class="attr-name">size</span>={<span class="property">18</span>} /&gt;}
+  <span class="attr-name">iconRight</span>={&lt;<span class="function">ChevronRightIcon</span> <span class="attr-name">size</span>={<span class="property">18</span>} /&gt;}
+  <span class="attr-name">onPrev</span>={handlePrev}
+  <span class="attr-name">onNext</span>={handleNext}
+/&gt;</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="usage-subsection">
+        <h2>CDN (no bundler)</h2>
+        <p>Load the package from unpkg when you're not using a build tool.</p>
+        <div class="code-block-group">
+          <div class="code-block-header">
+            <span class="code-block-lang">HTML</span>
+            <span class="code-block-filename">index.html</span>
+            <button class="code-block-copy" onclick="copyCode(this)" aria-label="Copy code">
+              <svg class="icon-copy" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg class="icon-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </button>
+          </div>
+          <div class="code-block">
+            <code>&lt;<span class="tag">link</span> <span class="attr-name">rel</span>=<span class="string">"stylesheet"</span> <span class="attr-name">href</span>=<span class="string">"https://unpkg.com/slider-nav-button/dist/slider-button.css"</span>&gt;
+&lt;<span class="tag">script</span> <span class="attr-name">type</span>=<span class="string">"module"</span>&gt;
+  <span class="keyword">import</span> { <span class="function">SliderButton</span> } <span class="keyword">from</span> <span class="string">'https://unpkg.com/slider-nav-button/dist/index.js'</span>;
+  <span class="keyword">new</span> <span class="function">SliderButton</span>({ <span class="property">onPrev</span>: () =&gt; {}, <span class="property">onNext</span>: () =&gt; {} }).<span class="function">mount</span>(<span class="string">'#container'</span>);
+&lt;/<span class="tag">script</span>&gt;</code>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="page">
+    <hr class="page-footer-divider">
+    <footer class="page-footer">
+      Developed by <a href="https://samet.works" target="_blank" rel="noopener noreferrer">samet.works</a> in 2026.
+    </footer>
+  </div>
+
+  <script>
+    function copyCode(btn) {
+      const group = btn.closest('.code-block-group');
+      const code = group.querySelector('.code-block code');
+      const text = code.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.classList.add('copied');
+        setTimeout(() => btn.classList.remove('copied'), 2000);
+      });
+    }
+  </script>
+
+  <script type="module">
+    import { SliderButton } from '../dist/index.js';
+
+    new SliderButton({
+      onPrev: () => {},
+      onNext: () => {},
+    }).mount('#mount-default');
+
+    new SliderButton({ size: 'sm', onPrev: () => {}, onNext: () => {} }).mount('#mount-sm');
+    new SliderButton({ size: 'md', onPrev: () => {}, onNext: () => {} }).mount('#mount-md');
+    new SliderButton({ size: 'lg', onPrev: () => {}, onNext: () => {} }).mount('#mount-lg');
+
+    new SliderButton({
+      onPrev: () => {},
+      onNext: () => {},
+    }).mount('#mount-dark');
+  </script>
+</body>
+</html>
