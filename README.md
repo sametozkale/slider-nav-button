@@ -100,7 +100,7 @@ Use CSS custom properties to theme the component. Target the `.snb` class or pas
   --snb-bg: transparent;
   --snb-hover-bg: #f7f7f7;
   --snb-border-color: #f2f2f2;
-  --snb-icon-color: #000;
+  --snb-icon-color: #17181A;
   --snb-divider-color: var(--snb-border-color);
   --snb-radius: 9999px;
   --snb-height: 36px;
