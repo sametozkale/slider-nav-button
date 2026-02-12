@@ -23,6 +23,7 @@
   ],
   "scripts": {
     "build": "tsup && shx cp src/core/slider-button.css dist/slider-button.css",
+    "build:deploy": "node scripts/build-deploy.js",
     "dev": "tsup --watch",
     "demo": "npm run build && npx serve . -p 3000"
   },
