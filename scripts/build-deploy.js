@@ -11,7 +11,7 @@ if (!fs.existsSync(publicDir)) {
 
 // Read demo HTML and rewrite paths (../dist/ -> dist/)
 const demoHtml = fs.readFileSync(path.join(root, 'demo', 'index.html'), 'utf8');
-const deployHtml = demoHtml.replace(/\.\.\/dist\//g, 'dist/');
+const deployHtml = demoHtml.replace(/\.\.\/dist\//g, './dist/');
 fs.writeFileSync(path.join(publicDir, 'index.html'), deployHtml);
 
 // Copy dist to public/dist
