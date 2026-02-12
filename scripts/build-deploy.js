@@ -14,6 +14,15 @@ const demoHtml = fs.readFileSync(path.join(root, 'demo', 'index.html'), 'utf8');
 const deployHtml = demoHtml.replace(/\.\.\/dist\//g, './dist/');
 fs.writeFileSync(path.join(publicDir, 'index.html'), deployHtml);
 
+// Copy static SEO files to public
+const staticDir = path.join(root, 'static');
+if (fs.existsSync(staticDir)) {
+  const files = fs.readdirSync(staticDir);
+  for (const f of files) {
+    fs.copyFileSync(path.join(staticDir, f), path.join(publicDir, f));
+  }
+}
+
 // Copy dist to public/dist
 const distDir = path.join(root, 'dist');
 const publicDistDir = path.join(publicDir, 'dist');

@@ -1,0 +1,50 @@
+# Slider Nav Button
+
+> Pill-shaped slider navigation button with divider-to-hover animation. When you hover over the left or right arrow, a background slides out from the central divider toward the hovered side.
+
+## About
+
+Slider Nav Button is a lightweight, accessible UI component for carousels and sliders. Works with Vanilla JavaScript and React.
+
+## Key Features
+
+- Pill-shaped design with smooth divider-to-hover animation
+- Three sizes: sm, md, lg
+- Customizable via CSS variables (dark theme, colors)
+- Vanilla JS and React support
+- Optional custom icons via iconLeft/iconRight props
+
+## Installation
+
+```bash
+npm install slider-nav-button
+```
+
+For React: `npm install @hugeicons/react @hugeicons/core-free-icons` (peer deps)
+
+## Usage
+
+Vanilla JS:
+```js
+import { SliderButton } from 'slider-nav-button';
+import 'slider-nav-button/styles.css';
+const button = new SliderButton({ onPrev: () => {}, onNext: () => {} });
+button.mount('#container');
+```
+
+React:
+```jsx
+import { SliderButton } from 'slider-nav-button/react';
+<SliderButton onPrev={handlePrev} onNext={handleNext} size="md" />
+```
+
+## Links
+
+- Demo: https://slider-nav-button.vercel.app/
+- GitHub: https://github.com/sametozkale/slider-nav-button
+- npm: https://www.npmjs.com/package/slider-nav-button
+
+## Author
+
+Developed by samet.works in 2026.
+License: MIT

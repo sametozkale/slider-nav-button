@@ -1,0 +1,8 @@
+/* TEAM */
+Developer: samet.works
+Site: https://samet.works
+
+/* SITE */
+Software: Slider Nav Button
+Language: JavaScript, TypeScript, React
+ standards: MIT, ES modules, HTML5
