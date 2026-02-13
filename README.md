@@ -56,6 +56,32 @@ function Carousel() {
 
 The React version includes styles automatically.
 
+### CDN (no bundler)
+
+```html
+<div id="container"></div>
+<link rel="stylesheet" href="https://unpkg.com/slider-nav-button/dist/slider-button.css">
+<script type="module">
+  import { SliderButton } from 'https://unpkg.com/slider-nav-button/dist/index.js';
+  new SliderButton({ onPrev: () => {}, onNext: () => {} }).mount('#container');
+</script>
+```
+
+### Custom icons (React)
+
+```jsx
+import { ChevronLeftIcon, ChevronRightIcon } from '@hugeicons/core-free-icons';
+import { HugeiconsIcon } from '@hugeicons/react';
+import { SliderButton } from 'slider-nav-button/react';
+
+<SliderButton
+  iconLeft={<HugeiconsIcon icon={ChevronLeftIcon} size={18} />}
+  iconRight={<HugeiconsIcon icon={ChevronRightIcon} size={18} />}
+  onPrev={handlePrev}
+  onNext={handleNext}
+/>
+```
+
 ## API
 
 ### Vanilla JS
@@ -66,8 +92,8 @@ The React version includes styles automatically.
 |--------|------|---------|-------------|
 | `onPrev` | `() => void` | - | Callback when left arrow is clicked |
 | `onNext` | `() => void` | - | Callback when right arrow is clicked |
-| `iconLeft` | `string` | Default arrow SVG | Custom HTML for left icon |
-| `iconRight` | `string` | Default arrow SVG | Custom HTML for right icon |
+| `iconLeft` | `string` | Default arrow SVG | Custom SVG HTML string for left icon |
+| `iconRight` | `string` | Default arrow SVG | Custom SVG HTML string for right icon |
 | `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Button size |
 | `className` | `string` | - | Additional CSS class for the container |
 
@@ -134,7 +160,7 @@ Then open the URL shown (e.g. `http://localhost:3000/demo/`).
 
 ## Browser support
 
-Uses `:has()` for hover detection. Supported in all modern browsers (Chrome 105+, Firefox 121+, Safari 15.4+).
+Vanilla JS uses `mousemove`/`mouseleave` for hover detection; React uses framer-motion. Supported in all modern browsers (Chrome 105+, Firefox 121+, Safari 15.4+).
 
 ## License
 

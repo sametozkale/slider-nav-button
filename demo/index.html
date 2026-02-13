@@ -133,19 +133,71 @@
     }
     .demo-box {
       background: #fff;
-      border: 1px solid #f7f7f7;
+      border: 1px solid rgba(247, 247, 247, 1);
       border-radius: 16px;
       padding: 2rem;
-      padding-bottom: 24px;
+      padding-bottom: 32px;
       margin: 1rem 0 1.5rem;
       box-shadow: none;
+      overflow: hidden;
     }
     .demo-box-caption {
       font-family: "Inter", system-ui, sans-serif;
       font-size: 0.875rem;
       color: #666;
       margin-top: 1.5rem;
+      margin-bottom: 32px;
       text-align: center;
+    }
+    .demo-box-footer {
+      background: #fafafa;
+      height: 48px;
+      border-radius: 0 0 15px 15px;
+      margin: 1rem -2rem -32px -2rem;
+      padding: 0 7px 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      border-top: 1px solid rgba(247, 247, 247, 1);
+      border-right: none;
+      border-bottom: none;
+      border-left: none;
+    }
+    .demo-box-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .demo-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 12px;
+      border: 1px solid #eee;
+      background: #fff;
+      color: #444;
+      text-decoration: none;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+    .demo-action-btn:hover {
+      border-color: #ddd;
+      background: #fff;
+      color: #17181A;
+    }
+    .demo-action-btn svg,
+    .demo-action-btn img {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+    .demo-action-btn .demo-action-btn-v0-icon {
+      width: 21px;
+      height: 10.5px;
     }
     .demo-row {
       display: flex;
@@ -233,8 +285,9 @@
     }
     /* ── Code Block Group (prompt-kit style) ── */
     .code-block-group {
+      position: relative;
       margin: 1rem 0 1.5rem;
-      border: 1px solid #f4f4f4;
+      border: 1px solid rgba(244, 244, 244, 1);
       border-radius: 16px;
       overflow: hidden;
       background: #fafafa;
@@ -246,6 +299,14 @@
       padding: 0.5rem 0.75rem;
       background: #fcfcfc;
       border-bottom: 1px solid #f4f4f4;
+    }
+    .code-block-npm-logo {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      flex-shrink: 0;
+      vertical-align: middle;
+      border-radius: 4px;
     }
     .code-block-lang {
       font-family: "Inter", system-ui, sans-serif;
@@ -364,6 +425,18 @@
           <div id="mount-default"></div>
         </div>
         <p class="demo-box-caption">Hover over the left or right arrow<br>to see the divider-to-hover animation</p>
+        <div class="demo-box-footer">
+          <div class="demo-box-actions">
+            <a href="https://cursor.com/link/prompt?text=Install%20the%20slider-nav-button%20package%20and%20add%20a%20SliderButton%20component%20to%20my%20project.%0ARun%3A%20npm%20install%20slider-nav-button%20framer-motion%20%40hugeicons%2Freact%20%40hugeicons%2Fcore-free-icons%0AThen%20create%20a%20usage%20example%20with%20the%20React%20component%20from%20'slider-nav-button%2Freact'." target="_blank" rel="noopener noreferrer" class="demo-action-btn" aria-label="Open in Cursor">
+              <img src="https://www.cursor.com/favicon.svg" alt="" width="14" height="14">
+              Open in Cursor
+            </a>
+            <a href="https://v0.dev/chat/api/open?url=https%3A%2F%2Fslider-nav-button.vercel.app%2Fr%2Fslider-button.json" target="_blank" rel="noopener noreferrer" class="demo-action-btn" aria-label="Open in v0">
+              <svg class="demo-action-btn-v0-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 20" fill="currentColor"><path d="M23.3919 0H32.9188C36.7819 0 39.9136 3.13165 39.9136 6.99475V16.0805H36.0006V6.99475C36.0006 6.90167 35.9969 6.80925 35.9898 6.71766L26.4628 16.079C26.4949 16.08 26.5272 16.0805 26.5595 16.0805H36.0006V19.7762H26.5595C22.6964 19.7762 19.4788 16.6139 19.4788 12.7508V3.68923H23.3919V12.7508C23.3919 12.9253 23.4054 13.0977 23.4316 13.2668L33.1682 3.6995C33.0861 3.6927 33.003 3.68923 32.9188 3.68923H23.3919V0Z"/><path d="M13.7688 19.0956L0 3.68759H5.53933L13.6231 12.7337V3.68759H17.7535V17.5746C17.7535 19.6705 15.1654 20.6584 13.7688 19.0956Z"/></svg>
+              Open in v0
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -416,6 +489,7 @@
         <p>Install the package and, for React projects, the Hugeicons dependencies used by the default icons.</p>
         <div class="code-block-group">
           <div class="code-block-header">
+            <img src="https://cdn.simpleicons.org/npm/CB3837" alt="npm" class="code-block-npm-logo" width="20" height="20">
             <span class="code-block-lang">Bash</span>
             <span class="code-block-filename">terminal</span>
             <button class="code-block-copy" onclick="copyCode(this)" aria-label="Copy code">
@@ -512,9 +586,13 @@ button.<span class="function">mount</span>(<span class="string">'#slider-contain
   <span class="property">--snb-border-color</span>: <span class="string">#f2f2f2</span>;
   <span class="property">--snb-icon-color</span>: <span class="string">#17181A</span>;
   <span class="property">--snb-divider-color</span>: <span class="keyword">var</span>(<span class="property">--snb-border-color</span>);
+  <span class="property">--snb-radius</span>: <span class="string">9999px</span>;
   <span class="property">--snb-height</span>: <span class="string">36px</span>;
   <span class="property">--snb-width</span>: <span class="string">90px</span>;
   <span class="property">--snb-icon-size</span>: <span class="string">18px</span>;
+  <span class="property">--snb-transition-duration</span>: <span class="string">0.28s</span>;
+  <span class="property">--snb-transition-easing</span>: <span class="string">cubic-bezier(0.25, 0.46, 0.45, 0.94)</span>;
+  <span class="property">--snb-hover-padding</span>: <span class="string">2px</span>;
 }</code>
           </div>
         </div>
@@ -533,9 +611,13 @@ button.<span class="function">mount</span>(<span class="string">'#slider-contain
             </button>
           </div>
           <div class="code-block">
-            <code>&lt;<span class="tag">SliderButton</span>
-  <span class="attr-name">iconLeft</span>={&lt;<span class="function">ChevronLeftIcon</span> <span class="attr-name">size</span>={<span class="property">18</span>} /&gt;}
-  <span class="attr-name">iconRight</span>={&lt;<span class="function">ChevronRightIcon</span> <span class="attr-name">size</span>={<span class="property">18</span>} /&gt;}
+            <code><span class="keyword">import</span> { <span class="function">ChevronLeftIcon</span>, <span class="function">ChevronRightIcon</span> } <span class="keyword">from</span> <span class="string">'@hugeicons/core-free-icons'</span>;
+<span class="keyword">import</span> { <span class="function">HugeiconsIcon</span> } <span class="keyword">from</span> <span class="string">'@hugeicons/react'</span>;
+<span class="keyword">import</span> { <span class="function">SliderButton</span> } <span class="keyword">from</span> <span class="string">'slider-nav-button/react'</span>;
+
+&lt;<span class="tag">SliderButton</span>
+  <span class="attr-name">iconLeft</span>={&lt;<span class="function">HugeiconsIcon</span> <span class="attr-name">icon</span>={<span class="function">ChevronLeftIcon</span>} <span class="attr-name">size</span>={<span class="property">18</span>} /&gt;}
+  <span class="attr-name">iconRight</span>={&lt;<span class="function">HugeiconsIcon</span> <span class="attr-name">icon</span>={<span class="function">ChevronRightIcon</span>} <span class="attr-name">size</span>={<span class="property">18</span>} /&gt;}
   <span class="attr-name">onPrev</span>={handlePrev}
   <span class="attr-name">onNext</span>={handleNext}
 /&gt;</code>
@@ -556,7 +638,10 @@ button.<span class="function">mount</span>(<span class="string">'#slider-contain
             </button>
           </div>
           <div class="code-block">
-            <code>&lt;<span class="tag">link</span> <span class="attr-name">rel</span>=<span class="string">"stylesheet"</span> <span class="attr-name">href</span>=<span class="string">"https://unpkg.com/slider-nav-button/dist/slider-button.css"</span>&gt;
+            <code><span class="comment">&lt;!-- Mount point in your HTML body --&gt;</span>
+&lt;<span class="tag">div</span> <span class="attr-name">id</span>=<span class="string">"container"</span>&gt;&lt;/<span class="tag">div</span>&gt;
+
+&lt;<span class="tag">link</span> <span class="attr-name">rel</span>=<span class="string">"stylesheet"</span> <span class="attr-name">href</span>=<span class="string">"https://unpkg.com/slider-nav-button/dist/slider-button.css"</span>&gt;
 &lt;<span class="tag">script</span> <span class="attr-name">type</span>=<span class="string">"module"</span>&gt;
   <span class="keyword">import</span> { <span class="function">SliderButton</span> } <span class="keyword">from</span> <span class="string">'https://unpkg.com/slider-nav-button/dist/index.js'</span>;
   <span class="keyword">new</span> <span class="function">SliderButton</span>({ <span class="property">onPrev</span>: () =&gt; {}, <span class="property">onNext</span>: () =&gt; {} }).<span class="function">mount</span>(<span class="string">'#container'</span>);
@@ -582,7 +667,7 @@ button.<span class="function">mount</span>(<span class="string">'#slider-contain
       navigator.clipboard.writeText(text).then(() => {
         btn.classList.add('copied');
         setTimeout(() => btn.classList.remove('copied'), 2000);
-      });
+      }).catch(() => {});
     }
   </script>
 

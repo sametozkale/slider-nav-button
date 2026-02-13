@@ -36,8 +36,12 @@
     "ui",
     "react"
   ],
-  "author": "",
+  "author": "Samet Ozkale (https://samet.works)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sametozkale/slider-nav-button"
+  },
   "peerDependencies": {
     "@hugeicons/core-free-icons": "^3.1.1",
     "@hugeicons/react": "^1.1.5",

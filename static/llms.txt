@@ -20,7 +20,7 @@ Slider Nav Button is a lightweight, accessible UI component for carousels and sl
 npm install slider-nav-button
 ```
 
-For React: `npm install @hugeicons/react @hugeicons/core-free-icons` (peer deps)
+For React: `npm install framer-motion @hugeicons/react @hugeicons/core-free-icons` (peer deps)
 
 ## Usage
 
