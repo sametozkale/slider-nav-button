@@ -1,6 +1,6 @@
 # Slider Nav Button
 
-Pill-shaped slider navigation button with divider-to-hover animation. Inspired by [adria.studio](https://www.adria.studio).
+Pill-shaped slider navigation button with divider-to-hover animation.
 
 When you hover over the left or right arrow, a background slides out from the central divider toward the hovered side.
 
