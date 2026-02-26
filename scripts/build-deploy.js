@@ -12,6 +12,12 @@ if (!fs.existsSync(publicDir)) {
   fs.mkdirSync(publicDir, { recursive: true });
 }
 
+// Copy root favicon.svg to public so production has the favicon at /
+const rootFavicon = path.join(root, 'favicon.svg');
+if (fs.existsSync(rootFavicon)) {
+  fs.copyFileSync(rootFavicon, path.join(publicDir, 'favicon.svg'));
+}
+
 // Read demo HTML and rewrite paths (../dist/ -> dist/)
 const demoHtml = fs.readFileSync(path.join(root, 'demo', 'index.html'), 'utf8');
 const deployHtml = demoHtml.replace(/\.\.\/dist\//g, './dist/');
