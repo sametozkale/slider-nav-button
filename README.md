@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/slider-nav-button.svg)](https://www.npmjs.com/package/slider-nav-button)
 [![npm downloads](https://img.shields.io/npm/dm/slider-nav-button.svg)](https://www.npmjs.com/package/slider-nav-button)
 
-Pill-shaped slider navigation button with divider-to-hover animation. Inspired by [adria.studio](https://www.adria.studio).
+Pill-shaped slider navigation button with divider-to-hover animation.
 
 When you hover over the left or right arrow, a background slides out from the central divider toward the hovered side.
 
